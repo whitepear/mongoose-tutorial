@@ -1,0 +1,43 @@
+extends layout
+
+block content
+	form(method="POST", action="newnote")
+		fieldset
+
+			legend Enter A Meeting Note
+
+			.form-group
+				label.col-md-12.control-label(for="memberName") Member
+				.col-md-12
+					select.form-control#memberName(name="memberName")
+						option(value="None") (Select Name)
+						option(value="Mark") Mark
+						option(value="David") David
+						option(value="John") John
+						option(value="Mary") Mary
+
+			.form-group
+				label.col-md-12.control-label(for="project") Project
+					.col-md-12
+						select.form-control#project(name="project")
+							option(value="None") (Select Project)
+							option(value="Matrix") Matrix API
+							option(value="Trinity") Trinity UI
+							option(value="Morpheus") Morpheus DB
+
+			.form-group
+				label.col-md-4.control-label(for="workYesterday") Work Yesterday
+					.col-md-6
+						textarea.form-control#workYesterday(name="workYesterday")
+
+			.form-group
+				label.col-md-4.control-label(for="workToday") Work Today
+					.col-md-6
+						textarea.form-control#workToday(name="workToday")
+
+			.form-group
+				label.col-md-4.control-label(for="impediment") Impediments to Work
+					.col-md-6
+						textarea.form-control#impediment(name="impediment")
+
+			btn.btn.btn-info(type="submit") Submit
