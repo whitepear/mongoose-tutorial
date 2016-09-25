@@ -5,17 +5,12 @@ var Standup = require('../models/standup.server.model.js');
 // further info: http://www.hacksparrow.com/node-js-exports-vs-module-exports.html
 
 exports.list = function(req, res) {
-	console.log('Inside controller list.');
-	Standup.find({}, function (err, results) {
-		console.log(results);
-		res.render('index', {title: 'Blargh', notes: results });
-	});
-	// query.sort({ createdOn: 'desc' })
-	// 		.limit(12)
-	// 		.exec(function(err, results) {
-	// 			console.log('Within exec method', results);
-	// 			res.render('index', {title: 'Standup - List', notes: results});	
-	// 		});
+	var query = Standup.find();
+	query.sort({ createdOn: 'desc' })
+			.limit(12)
+			.exec(function(err, results) {
+				res.render('index', {title: 'Standup - List', notes: results });	
+			});
 };
 
 exports.getNote = function(req, res) {
