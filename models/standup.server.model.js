@@ -68,3 +68,28 @@ module.exports = mongoose.model('Standup', standupSchema);
 // build a model from this schema
 // append new key-value pairs to the schema via .add({})
 // build a slightly different model from this updated schema
+
+// required can be added to the schema later as well as directly within it
+// After the schema is defined - via path API
+// someSchema.path('city').required(true, 'Oops! Supply a city.');
+// where path takes a field name to be set to required. second required param is
+// optional custom error message.
+
+// match validator takes regex to match passed strings.
+
+// enum validator ensures that string passed is found within a
+// pre-determined, enumerated list of strings.
+
+// number schema type has min and max. can be used simultaneously
+// to delimit a range.
+
+// custom validators can be created with the signature:
+// validate(obj, [errMessage]). e.g.
+// var sizeValidator = [
+// 	function(val) {
+// 		return (val.length > 0 && val.length <= 50);
+// 	},
+// 	'String must be between 1 and 50 characters long.'];
+
+// the validator can then be passed into the schema like so:
+// validate: sizeValidator
