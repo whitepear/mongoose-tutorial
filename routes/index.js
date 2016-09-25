@@ -7,6 +7,11 @@ router.get('/', function(req, res, next) {
   return standupCtrl.list(req, res);
 });
 
+// POST /
+router.post('/', function(req, res, next) {
+	return standupCtrl.filterByMember(req, res);
+});
+
 // GET newnote
 router.get('/newnote', function(req, res) {
 	return standupCtrl.getNote(req, res);
