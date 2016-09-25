@@ -13,6 +13,21 @@ exports.list = function(req, res) {
 			});
 };
 
+exports.filterByMember = function(req, res) {
+	var query = Standup.find();
+	var filter = req.body.memberName;
+
+	query.sort({ createdOn: 'desc' });
+
+	if (filter.length > 0) {
+		query.where({memberName: filter});
+	}
+
+	query.exec(function(err, results) {
+		res.render('index', { title: 'Standup - List', notes: results });
+	});
+};
+
 exports.getNote = function(req, res) {
 	res.render('newnote', { title: 'Standup - New Note' });
 };
