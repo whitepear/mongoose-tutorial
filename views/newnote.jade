@@ -1,6 +1,10 @@
 extends layout
 
 block content
+
+	if message != undefined && message.length > 0
+		.alert.alert-danger.alert-error	#{message}
+
 	form(method="POST", action="/newnote")
 		fieldset
 
