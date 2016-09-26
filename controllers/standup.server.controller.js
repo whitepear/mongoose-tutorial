@@ -41,8 +41,13 @@ exports.create = function (req, res) {
 		impediment: req.body.impediment
 	});
 
-	entry.save(); // save to database
-
-	// redirect to home page
-	res.redirect(301, '/');
+	entry.save(function(err) {
+		if (err) {
+			var errMsg = 'Sorry, there was an error saving the stand-up note to the database.' + err;
+			res.render('newnote', {title: 'New Note - Error', message: errMsg})
+		} else {
+			console.log('Document successfully saved to datbase.');
+			res.redirect(301, '/');
+		}
+	}); // save to database
 };
